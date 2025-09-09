@@ -1,15 +1,15 @@
-# generated_tokens = tokenized.to(model.device)
-# attention_mask = torch.ones_like(generated_tokens, device=model.device)
+generated_tokens = tokenized.to(model.device)
+attention_mask = torch.ones_like(generated_tokens, device=model.device)
 
 
 import torch
 import torch.nn.functional as F
 
-# tokenized is a torch.Tensor of shape [1, seq_len]
+tokenized is a torch.Tensor of shape [1, seq_len]
 input_ids = tokenized.to(model.device)
 attention_mask = torch.ones_like(input_ids, device=model.device)
 
-max_new_tokens = 200  # number of tokens to generate
+max_new_tokens = 200  >>>number of tokens to generate
 
 for _ in range(max_new_tokens):
     outputs = model(input_ids=input_ids, attention_mask=attention_mask)
@@ -23,7 +23,7 @@ for _ in range(max_new_tokens):
     input_ids = torch.cat([input_ids, next_token], dim=1)
     attention_mask = torch.cat([attention_mask, torch.ones((1,1), device=model.device)], dim=1)
 
-# Decode the generated text
+Decode the generated text
 output_text = tokenizer.decode(input_ids[0], skip_special_tokens=True)
 print(output_text)
 
